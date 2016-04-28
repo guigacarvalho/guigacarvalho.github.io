@@ -1,15 +1,22 @@
 ---
 layout: page
-title: About
+title: About me
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Hi, I am Guilherme Carvalho, a web/mobile developer based out of San Jose, CA.
+Graduated from the [Federal University of Ceara][ufc]. 
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
+I am working for [The Home Depot][thd].
+We work with python and angular.JS stacks.
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+### Contact me
+
+Find me on [Github][github] / [Twitter][Twitter] or just say `Hello` at 
+[guilherme.carvalho@gmail.com](guilherme.carvalho@gmail.com).
+
+
+[ufc]: http://www.ufc.br
+[github]: https://github.com/guigacarvalho
+[twitter]: https://twitter.com/guigacarvalho
+[thd]: http://www.homedepot.com

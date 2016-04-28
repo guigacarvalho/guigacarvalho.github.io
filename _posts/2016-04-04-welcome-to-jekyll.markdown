@@ -1,25 +1,21 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2016-04-04 09:19:20 -0700
-categories: jekyll update
+title:  Z Algorithm
+date:   2015-02-18 09:19:20 -0700
+categories: Algorithms
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+This week I started studying the String Matching problem for a class I’m taking at SCU. The Z Algorithm is the simplest algorithm known to date to solve this problem in linear time.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+After some research, I have found these resources on the topic:
 
-Jekyll also offers powerful support for code snippets:
+- [Professor Gusfield (UC Davis) classes on the Z-Algorithm (Lectures 21 and 22)][z-classes]
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+Professor Gusfield is also the author of one my textbooks: Algorithms on Strings, Trees and Sequences: Computer Science and Computational Biology and explains the topic in a really accessible way.
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+- [This blog post][blog-post-z] with a python implementation and great explanation. 
 
-[jekyll-docs]: http://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+For more details, here is the [link of my presentation][ppt-link] on the theme.
+
+[ppt-link]:   https://docs.google.com/presentation/d/1WCJFEOMaRu0LVD4GHRCsVSQOFqhQUCjsk6kan_x30WQ/edit#slide=id.g62c67b67f_05
+[blog-post-z]: http://ivanyu.me/blog/2013/10/15/z-algorithm/
+[z-classes]: http://web.cs.ucdavis.edu/~gusfield/cs122f10/videolist.html

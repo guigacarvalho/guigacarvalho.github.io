@@ -1,19 +1,51 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
+# Base URL
+baseurl:
 
-# Site settings
-title: guigacarvalho's blog 
-email: guilherme.carvalho@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Just sharing my personal projects and discoveries.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://guigacarvalho.github.io" # the base hostname & protocol for your site
-twitter_username: guigacarvalho
-github_username:  guigacarvalho
+# Site live URL
+url: http://guigacarvalho.github.io
 
-# Build settings
-markdown: kramdown
+# Localhost
+# url: http://127.0.0.1:4000
+
+# Harmony theme configuration.
+harmony:
+  name: guigacarvalho's blog
+  description: Just sharing my personal projects and discoveries.
+  meta_description: >
+  basetheme: theme-base-01
+  author: # Author details
+    name: Gayan Virajith
+    email: gayanvirajith@gmail.com
+    url: http://gayanvirajith.github.io
+
+  # Google Analytics key, leave blank to ignore
+  google_analytics_key: UA-77096743-1
+
+  # Profile links, leave blank to ignore
+  social:
+    github: guigacarvalho
+    twitter: guigacarvalho
+
+  # Toggle disclaimer in footer
+  show_disclaimer: true
+
+# Conversion / Build settings
+markdown:    kramdown
+highlighter: pygments
+
+# Permalinks
+permalink:        pretty
+
+exclude:
+  - CNAME
+  - Gemfile
+  - Rakefile
+  - README.md
+  - .gitignore
+  - .sass-cache
+  - Gemfile.lock
+
+# Sass conversion configs
+sass:
+    sass_dir: assets/css/_sass
+    style: :compressed
