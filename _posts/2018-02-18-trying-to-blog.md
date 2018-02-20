@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  Trying again to have a personal blog..
+categories: personal
 date:   2018-02-18 20:15:22 -0700
 comments: true
 ---
