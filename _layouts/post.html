@@ -13,10 +13,21 @@ layout: default
     </section>
     <footer class="post-footer">
       <section class="share">
-        <a class="icon" href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.id }}&text={{page.title | cgi_escape}}&via={{ site.twitter_username }}" target="_blank">
-          Share on
-          {% include icon-twitter.html %}
-        </a>
+          <amp-social-share type="twitter"></amp-social-share>
+          <amp-social-share type="email"></amp-social-share>
+          <amp-social-share type="linkedin"></amp-social-share>
+          <amp-social-share type="whatsapp"></amp-social-share>
+          <amp-social-share type="facebook"></amp-social-share>
+      </section>
+      <section class="comments">
+        {% if page.comments %}
+        <amp-iframe width=600 height=140
+          layout="responsive"
+          sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+          resizable
+          src="https://raw.githubusercontent.com/guigacarvalho/guigacarvalho.github.io/master/_includes/disqus_amp.html">
+        </amp-iframe>
+        {% endif %}  
       </section>
     </footer>
     <div class="bottom-teaser cf">

@@ -18,5 +18,4 @@ With documentation comes solidified knowledge and with sharing, different perspe
 > 
  Make my writing great again
 
-Whether it is a photo caption, an SMS or a `git commit`, sometimes it's hard to find the right words, specially when English is your second language.
-
+Whether it is a photo caption, an SMS or a `git commit`, sometimes it's hard to find the right words, specially when English is your second language. Anyways, I hope this is useful for someone, even if that someone is myself. ;)
