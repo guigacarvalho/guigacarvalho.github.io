@@ -11,7 +11,7 @@ email: guilherme.carvalho@gmail.com
 description: talking about life, technology and other things
 logo: "/assets/images/logo.png"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://github.io/guigacarvalho" # the base hostname & protocol for your site
+url: "https://guigacarvalho.github.io" # the base hostname & protocol for your site
 paginate:	5 # The number of posts to show per page on your homepage
 
 name: 'Guilherme Carvalho'
