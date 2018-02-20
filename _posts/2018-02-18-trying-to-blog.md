@@ -5,7 +5,6 @@ categories: personal
 date:   2018-02-18 20:15:22 -0700
 comments: true
 ---
-<amp-img width="400" height="150" layout="responsive" alt="But I won't give up" src="https://raw.githubusercontent.com/guigacarvalho/guigacarvalho.github.io/master/assets/content/giphy.gif"></amp-img>
 
 Always marveled at the idea of writting more and gathering feedback on my thoughts. Never really had the discipline to, but here I'm am once again. 
 
