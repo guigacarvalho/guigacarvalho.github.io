@@ -4,20 +4,27 @@ title: About
 permalink: /about/
 ---
 
-<amp-img width="600" height="300" layout="responsive" src="http://lorempixel.com/600/300/technics"></amp-img>
 
-Proudly born and raised in Fortaleza, Brazil, I grew up and graduated from [college][ufc] and got a job.
+Proudly born and raised in Fortaleza, Brazil.
 
-At 28 I felt the itch to go for a Masters in Computer Science.. That's how I ended up in Northern California working for on a tech office for [The Home Depot][thd].
+Loving Northern California and currently working for on a tech office for [The Home Depot][thd].
 
 We work with python, java and javascript stacks.
 
+<amp-instagram
+    data-shortcode="BdqntfwF-SJ"
+    data-captioned
+    width="600"
+    height="600"
+    layout="responsive">
+</amp-instagram>
+
 ### Contact me
 
-Find me on [Github][github] / [Twitter][Twitter] or just say `Hello` at 
+Find me on [Github][github] / [Twitter][Twitter] / [LinkedIn][linkedin] or just say `Hello` at 
 [guilherme.carvalho@gmail.com](guilherme.carvalho@gmail.com).
 
-
+[linkedin]: https://www.linkedin.com/in/gcarv
 [ufc]: http://www.ufc.br
 [github]: https://github.com/guigacarvalho
 [twitter]: https://twitter.com/guigacarvalho
