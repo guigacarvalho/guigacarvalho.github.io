@@ -1,6 +1,6 @@
 # Personal Blog
 
-Used a Jekyll html theme in the vague style of Medium.com built using Google AMP.
+Used a Jekyll html [theme](https://github.com/ageitgey/amplify) in the vague style of Medium.com built using Google AMP.
 
 ## Credits
 
@@ -9,4 +9,4 @@ This theme is inspired by
 
 ## License
 
-MIT. See LICENSE file in repo.
+MIT.
