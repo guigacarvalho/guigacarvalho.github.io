@@ -1,51 +1,35 @@
-# Base URL
-baseurl:
+# Welcome to Amplified for Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
-# Site live URL
-url: http://guigacarvalho.github.io
+# Site settings
+title: G's blog
+email: guilherme.carvalho@gmail.com
+description: talking about life, technology and other things
+logo: "/assets/images/logo.png"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://github.io/guigacarvalho" # the base hostname & protocol for your site
+paginate:	5 # The number of posts to show per page on your homepage
 
-# Localhost
-# url: http://127.0.0.1:4000
+name: 'Guilherme Carvalho'
+bio: >
+  I'm curious. 🤓 Software developer by trade, usually working with Vue.JS and React. 
+  When I'm not engineering, I like to surf, woodwork, hike, geek around and hangout with friends.
+author_image: "/assets/images/author.jpg"
+twitter_username: guigacarvalho
+github_username:  guigacarvalho
 
-# Harmony theme configuration.
-harmony:
-  name: guilherme carvalho
-  description: personal blog
-  meta_description: >
-  basetheme: theme-base-01
-  author: # Author details
-    name: Gayan Virajith
-    email: gayanvirajith@gmail.com
-    url: http://gayanvirajith.github.io
+# Google Analytics
+analytics_id: "UA-77096743-1"
 
-  # Google Analytics key, leave blank to ignore
-  google_analytics_key: UA-77096743-1
+# Build settings
+markdown: kramdown
 
-  # Profile links, leave blank to ignore
-  social:
-    github: guigacarvalho
-    twitter: guigacarvalho
+kramdown:
+  parse_block_html: true
 
-  # Toggle disclaimer in footer
-  show_disclaimer: true
-
-# Conversion / Build settings
-markdown:    kramdown
-highlighter: pygments
-
-# Permalinks
-permalink:        pretty
-
-exclude:
-  - CNAME
-  - Gemfile
-  - Rakefile
-  - README.md
-  - .gitignore
-  - .sass-cache
-  - Gemfile.lock
-
-# Sass conversion configs
-sass:
-    sass_dir: assets/css/_sass
-    style: :compressed
+plugins:
+  - jekyll-paginate

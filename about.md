@@ -1,14 +1,16 @@
 ---
 layout: page
-title: About me
+title: About
 permalink: /about/
 ---
 
-Hi, I am Guilherme Carvalho, a web/mobile developer based out of San Jose, CA.
-Graduated from the [Federal University of Ceara][ufc]. 
+<amp-img width="600" height="300" layout="responsive" src="http://lorempixel.com/600/300/technics"></amp-img>
 
-I am working for [The Home Depot][thd].
-We work with python and angular.JS stacks.
+Proudly born and raised in Fortaleza, Brazil, I grew up and graduated from [college][ufc] and got a job.
+
+At 28 I felt the itch to go for a Masters in Computer Science.. That's how I ended up in Northern California working for on a tech office for [The Home Depot][thd].
+
+We work with python, java and javascript stacks.
 
 ### Contact me
 
