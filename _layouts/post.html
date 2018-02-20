@@ -21,13 +21,14 @@ layout: default
       </section>
       <section class="comments">
         {% if page.comments %}
+        {% include disqus_amp.html %}
         <amp-iframe width=600 height=140
           layout="responsive"
           sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
           resizable
           src="https://raw.githubusercontent.com/guigacarvalho/guigacarvalho.github.io/master/_includes/disqus_amp.html">
         </amp-iframe>
-        {% endif %}  
+        {% endif %}
       </section>
     </footer>
     <div class="bottom-teaser cf">
