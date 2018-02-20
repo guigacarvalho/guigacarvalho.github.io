@@ -21,7 +21,8 @@ layout: default
       </section>
       <section class="comments">
         {% if page.comments %}
-        <amp-iframe width=600 height=140
+        {% include disqus_amp.html %}
+        <amp-iframe width=600 height=0
           layout="responsive"
           sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
           resizable
