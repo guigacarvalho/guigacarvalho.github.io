@@ -14,8 +14,20 @@
       --muted: #6b7280;
       --accent: #2563eb;
       --rule: #e5e5e3;
-      --surface: #fff;
       --tag-bg: #f3f4f6;
+      --tag-text: #374151;
+      --body-text: #374151;
+    }
+
+    [data-theme="dark"] {
+      --bg: #111110;
+      --text: #e8e8e4;
+      --muted: #8b8b85;
+      --accent: #60a5fa;
+      --rule: #2a2a27;
+      --tag-bg: #1e1e1b;
+      --tag-text: #c4c4be;
+      --body-text: #b0b0aa;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,16 +40,57 @@
       font-size: 15px;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.25s ease, color 0.25s ease;
     }
 
     ::selection { background: #bfdbfe; }
+    [data-theme="dark"] ::selection { background: #1e3a5f; }
 
+    /* Toggle button */
+    .theme-toggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      background: var(--bg);
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.15s;
+      z-index: 100;
+    }
+
+    .theme-toggle:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.08);
+    }
+
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      transition: opacity 0.2s, transform 0.3s;
+    }
+
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    /* Layout */
     .page {
       max-width: 760px;
       margin: 0 auto;
       padding: 5rem 2rem 4rem;
     }
 
+    /* Reveal animation */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -49,10 +102,12 @@
       transform: translateY(0);
     }
 
+    /* Header */
     header {
       margin-bottom: 4rem;
       padding-bottom: 3rem;
       border-bottom: 1px solid var(--rule);
+      transition: border-color 0.25s;
     }
 
     .header-meta {
@@ -61,6 +116,7 @@
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 1.2rem;
+      transition: color 0.25s;
     }
 
     h1 {
@@ -71,6 +127,7 @@
       color: var(--text);
       margin-bottom: 0.6rem;
       letter-spacing: -0.02em;
+      transition: color 0.25s;
     }
 
     .subtitle {
@@ -78,6 +135,7 @@
       color: var(--muted);
       font-weight: 300;
       margin-bottom: 1.8rem;
+      transition: color 0.25s;
     }
 
     .contact-row {
@@ -91,12 +149,13 @@
       color: var(--accent);
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, color 0.25s;
     }
 
     .contact-row a:hover { border-bottom-color: var(--accent); }
-    .contact-row span { color: var(--muted); }
+    .contact-row span { color: var(--muted); transition: color 0.25s; }
 
+    /* Section */
     section { margin-bottom: 3.5rem; }
 
     .section-label {
@@ -109,6 +168,7 @@
       display: flex;
       align-items: center;
       gap: 0.8rem;
+      transition: color 0.25s;
     }
 
     .section-label::after {
@@ -116,16 +176,20 @@
       flex: 1;
       height: 1px;
       background: var(--rule);
+      transition: background 0.25s;
     }
 
+    /* Summary */
     .summary p {
       font-size: 1rem;
-      color: #374151;
+      color: var(--body-text);
       line-height: 1.85;
       font-weight: 300;
       max-width: 640px;
+      transition: color 0.25s;
     }
 
+    /* Skills */
     .skills-grid { display: grid; gap: 0.8rem; }
 
     .skill-row {
@@ -140,6 +204,7 @@
       color: var(--muted);
       font-weight: 500;
       padding-top: 0.25rem;
+      transition: color 0.25s;
     }
 
     .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
@@ -149,18 +214,21 @@
       border-radius: 3px;
       padding: 0.2rem 0.55rem;
       font-size: 12px;
-      color: #374151;
+      color: var(--tag-text);
       font-weight: 400;
       transition: background 0.15s, color 0.15s;
       cursor: default;
     }
 
     .tag:hover { background: #dbeafe; color: var(--accent); }
+    [data-theme="dark"] .tag:hover { background: #1e3a5f; }
 
+    /* Jobs */
     .job {
       padding-bottom: 2.5rem;
       margin-bottom: 2.5rem;
       border-bottom: 1px solid var(--rule);
+      transition: border-color 0.25s;
     }
 
     .job:last-child {
@@ -176,6 +244,7 @@
       font-size: 1.15rem;
       font-weight: 500;
       color: var(--text);
+      transition: color 0.25s;
     }
 
     .job-meta {
@@ -185,17 +254,18 @@
       margin-top: 0.2rem;
     }
 
-    .job-title { font-size: 13px; color: var(--accent); font-weight: 500; }
-    .job-date { font-size: 13px; color: var(--muted); }
+    .job-title { font-size: 13px; color: var(--accent); font-weight: 500; transition: color 0.25s; }
+    .job-date { font-size: 13px; color: var(--muted); transition: color 0.25s; }
 
     .job ul { list-style: none; margin-top: 0.8rem; }
 
     .job li {
       font-size: 14px;
-      color: #374151;
+      color: var(--body-text);
       padding: 0.2rem 0 0.2rem 1.2rem;
       position: relative;
       font-weight: 300;
+      transition: color 0.25s;
     }
 
     .job li::before {
@@ -206,6 +276,7 @@
       font-size: 12px;
     }
 
+    /* Education */
     .edu-grid { display: grid; gap: 1.5rem; }
 
     .edu-item {
@@ -215,52 +286,47 @@
       align-items: start;
     }
 
-    .edu-school { font-weight: 500; font-size: 14px; }
-    .edu-degree { font-size: 13px; color: var(--muted); }
-    .edu-date { font-size: 12px; color: var(--muted); white-space: nowrap; margin-top: 0.1rem; }
+    .edu-school { font-weight: 500; font-size: 14px; color: var(--text); transition: color 0.25s; }
+    .edu-degree { font-size: 13px; color: var(--muted); transition: color 0.25s; }
+    .edu-date { font-size: 12px; color: var(--muted); white-space: nowrap; margin-top: 0.1rem; transition: color 0.25s; }
 
+    /* Footer */
     footer {
       border-top: 1px solid var(--rule);
       padding-top: 2rem;
       margin-top: 1rem;
-    }
-
-    .designs-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      margin-bottom: 0.8rem;
-    }
-
-    .designs-grid {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .design-link {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--rule);
-      border-radius: 6px;
       font-size: 12px;
       color: var(--muted);
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color 0.25s, color 0.25s;
     }
-
-    .design-link:hover { border-color: var(--accent); color: var(--accent); }
-    .design-link.active { border-color: var(--accent); color: var(--accent); background: #eff6ff; }
 
     @media (max-width: 560px) {
       .page { padding: 3rem 1.25rem; }
       .skill-row { grid-template-columns: 1fr; gap: 0.4rem; }
       .edu-item { grid-template-columns: 1fr; }
+      .theme-toggle { top: 1rem; right: 1rem; }
     }
   </style>
 </head>
 <body>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+
   <div class="page">
 
     <header class="reveal">
@@ -464,19 +530,34 @@
     </section>
 
     <footer class="reveal">
-      <div class="designs-label">Explore design variants</div>
-      <div class="designs-grid">
-        <a href="/" class="design-link active">/ Minimal light (default)</a>
-        <a href="/1" class="design-link">/1 Terminal dark</a>
-        <a href="/2" class="design-link">/2 Minimal light</a>
-        <a href="/3" class="design-link">/3 Dark sidebar</a>
-        <a href="/4" class="design-link">/4 Editorial</a>
-      </div>
+      <p>Guilherme Carvalho · Austin, Texas · guilherme.carvalho@gmail.com</p>
     </footer>
 
   </div>
 
   <script>
+    // Theme: check localStorage, then system preference
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = stored ?? (prefersDark ? 'dark' : 'light');
+    if (initial === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+
+    const toggle = document.getElementById('themeToggle');
+    toggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Respond to system preference changes (only if user hasn't overridden)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+      }
+    });
+
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {
         if (el.isIntersecting) {
