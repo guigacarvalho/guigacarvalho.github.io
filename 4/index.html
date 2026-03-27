@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guilherme Carvalho — Staff Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --white: #ffffff;
+      --text: #1c1c1e;
+      --muted: #636366;
+      --dim: #aeaeb2;
+      --border: #e5e5ea;
+      --accent-1: #e63946;
+      --accent-2: #457b9d;
+      --accent-3: #2a9d8f;
+      --accent-4: #e9c46a;
+      --timeline-line: #d1d1d6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: #cce4f7; }
+
+    /* ---- HERO ---- */
+    .hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 0 0;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    .hero-kicker {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--accent-2);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: up 0.5s ease 0.1s forwards;
+    }
+
+    .hero-name {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: up 0.5s ease 0.2s forwards;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: up 0.5s ease 0.3s forwards;
+    }
+
+    @keyframes up {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: stretch;
+      border-top: 1px solid var(--border);
+      opacity: 0;
+      animation: up 0.5s ease 0.4s forwards;
+    }
+
+    .hero-meta-item {
+      padding: 1rem 0;
+      flex: 1;
+      border-right: 1px solid var(--border);
+      padding-right: 1.5rem;
+      padding-left: 0;
+    }
+
+    .hero-meta-item:not(:first-child) { padding-left: 1.5rem; }
+    .hero-meta-item:last-child { border-right: none; }
+
+    .meta-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .meta-value {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .meta-value a {
+      color: var(--accent-2);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .meta-value a:hover { border-bottom-color: var(--accent-2); }
+
+    /* ---- CONTENT ---- */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3.5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .main-col {}
+    .side-col {}
+
+    /* Section titles */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title-text {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-title-bar {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Summary */
+    .summary-block {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: #2c2c2e;
+      line-height: 1.8;
+      border-left: 3px solid var(--accent-2);
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 0;
+      width: 1px;
+      background: var(--timeline-line);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2rem;
+      top: 6px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--accent-2);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      background: var(--accent-2);
+    }
+
+    .timeline-company {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-role {
+      font-size: 13px;
+      color: var(--accent-2);
+      font-weight: 500;
+    }
+
+    .timeline-date {
+      font-size: 11px;
+      color: var(--dim);
+      margin-bottom: 0.7rem;
+    }
+
+    .timeline-item ul { list-style: none; }
+
+    .timeline-item li {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 0.15rem 0 0.15rem 1rem;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .timeline-item li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      width: 5px;
+      height: 1px;
+      background: var(--dim);
+    }
+
+    /* Skills sidebar */
+    .side-block {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3rem;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .side-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .side-block-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tag-group { margin-bottom: 0.6rem; }
+    .tag-group:last-child { margin-bottom: 0; }
+
+    .tag-group-label {
+      font-size: 10px;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.35rem;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+    .tag {
+      font-size: 11px;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      cursor: default;
+      transition: opacity 0.15s;
+    }
+
+    .tag:hover { opacity: 0.8; }
+    .tag.t1 { background: #dbeafe; color: #1d4ed8; }
+    .tag.t2 { background: #dcfce7; color: #166534; }
+    .tag.t3 { background: #fef3c7; color: #92400e; }
+
+    /* Education sidebar */
+    .edu-item {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-item:first-child { padding-top: 0; }
+    .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .edu-school {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.1rem;
+    }
+
+    .edu-degree {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .edu-year {
+      font-size: 10px;
+      color: var(--dim);
+      margin-top: 0.15rem;
+    }
+
+    /* Stats */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .stat {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 0.7rem 0.8rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: var(--dim);
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Footer */
+    .page-footer {
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      padding: 1.5rem 2.5rem;
+      text-align: center;
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+    .page-footer a { color: var(--accent-2); text-decoration: none; }
+
+    @media (max-width: 700px) {
+      .content { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-meta { flex-direction: column; }
+      .hero-meta-item { border-right: none; border-bottom: 1px solid var(--border); padding: 0.75rem 0; }
+      .hero-meta-item:last-child { border-bottom: none; }
+      .hero-inner { padding: 0 1.25rem; }
+      .content { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Staff Software Engineer · Resume</div>
+      <h1 class="hero-name">Guilherme<br>Carvalho</h1>
+      <p class="hero-tagline">Engineering leader with 8+ years shipping web, mobile, and cloud — from React Native apps to BFF architectures at scale. Austin, Texas.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="meta-label">Email</div>
+          <div class="meta-value">guilherme.carvalho@gmail.com</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-label">LinkedIn</div>
+          <div class="meta-value"><a href="https://linkedin.com/in/gcarv">linkedin.com/in/gcarv</a></div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-label">GitHub</div>
+          <div class="meta-value"><a href="https://github.com/guigacarvalho">github.com/guigacarvalho</a></div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-label">Location</div>
+          <div class="meta-value">Austin, Texas, US</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- Main column -->
+    <div class="main-col">
+
+      <div class="summary-block">
+        Staff Software Engineer with 8+ years of experience in web development, mobile applications, and cloud technologies. Proven leadership in mentoring teams, driving innovation, and optimizing application performance. Passionate about transitioning legacy systems to modern cloud architectures and building scalable software solutions.
+      </div>
+
+      <div class="section-title">
+        <span class="section-title-text">Experience</span>
+        <div class="section-title-bar"></div>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-company">The Home Depot</div>
+          <div class="timeline-role">Staff Software Engineer</div>
+          <div class="timeline-date">Jan 2023 – Present · Austin, TX</div>
+          <ul>
+            <li>Led development of critical application used by 700+ associates; earned Orange Spotlight award</li>
+            <li>Interviewed and onboarded 10+ engineers, improving team capacity and knowledge sharing</li>
+            <li>Designed and implemented the Backend-for-Frontend (BFF) pattern, enhancing API efficiency</li>
+            <li>Documented architecture decisions and created proof-of-concept implementations</li>
+            <li>Integrated application with CI/CD pipelines, streamlining deployment processes</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-company">The Home Depot</div>
+          <div class="timeline-role">Staff Software Engineer</div>
+          <div class="timeline-date">Mar 2020 – Dec 2022 · Austin, TX</div>
+          <ul>
+            <li>Mentored and onboarded 8 software engineers, accelerating productivity and growth</li>
+            <li>Drove CI/CD pipeline upgrades, improving build times and deployment reliability</li>
+            <li>Led API redesign for services department, enhancing performance and developer experience</li>
+            <li>Transitioned legacy C++ systems to Node.js Cloud Functions, reducing maintenance costs</li>
+            <li>Implemented UX improvements based on user feedback and analytics</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-company">The Home Depot</div>
+          <div class="timeline-role">Mobile Application Developer</div>
+          <div class="timeline-date">Mar 2019 – Mar 2020 · Austin, TX</div>
+          <ul>
+            <li>Developed features using React Native, Redux, and RxJS</li>
+            <li>Managed full mobile app lifecycle: specs, sizing, builds, and releases</li>
+            <li>Implemented mobile CI/CD pipeline and shareable component library</li>
+            <li>Reduced app bundle size by 25% through code optimization</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-company">Techshed</div>
+          <div class="timeline-role">Full Stack Engineer</div>
+          <div class="timeline-date">Apr 2015 – Feb 2019</div>
+          <ul>
+            <li>Built responsive web apps using Python/Django, PostgreSQL, Angular, and Vue.js</li>
+            <li>Optimized performance and SEO; increased page load speed and search rankings</li>
+            <li>Designed REST APIs documented for internal and external developers</li>
+            <li>Implemented A/B testing frameworks providing data-driven product insights</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-company">Frugal Innovation Lab</div>
+          <div class="timeline-role">Software Engineer</div>
+          <div class="timeline-date">Feb 2014 – Mar 2015 · San Francisco Bay Area</div>
+          <ul>
+            <li>Developed APIs and web interfaces for mobile apps using JS, HTML5, Cordova, and Ember.js</li>
+            <li>Collaborated on innovative solutions for resource-constrained environments</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-company">M. Dias Branco</div>
+          <div class="timeline-role">Project Analyst / Industrial Engineer</div>
+          <div class="timeline-date">Feb 2008 – Dec 2012</div>
+          <ul>
+            <li>Awarded Best Industrial Project: $100,000+ in energy savings via Compressed Air Optimization</li>
+            <li>Deployed MES with Rockwell Automation; programmed PLCs and web interfaces</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Side column -->
+    <div class="side-col">
+
+      <div class="side-block">
+        <div class="side-block-title">Highlights</div>
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="stat-num">8+</div>
+            <div class="stat-label">Years experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">700+</div>
+            <div class="stat-label">Users impacted</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">18+</div>
+            <div class="stat-label">Engineers mentored</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">25%</div>
+            <div class="stat-label">Bundle size reduction</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <div class="side-block-title">Skills</div>
+        <div class="tag-group">
+          <div class="tag-group-label">Languages &amp; Frameworks</div>
+          <div class="tags">
+            <span class="tag t1">JavaScript</span>
+            <span class="tag t1">TypeScript</span>
+            <span class="tag t1">Node.js</span>
+            <span class="tag t1">React</span>
+            <span class="tag t1">React Native</span>
+            <span class="tag t1">Redux</span>
+            <span class="tag t1">RxJS</span>
+            <span class="tag t1">Python</span>
+            <span class="tag t1">Django</span>
+            <span class="tag t1">C++</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag-group-label">Tools &amp; Platforms</div>
+          <div class="tags">
+            <span class="tag t2">AWS</span>
+            <span class="tag t2">Cloud Functions</span>
+            <span class="tag t2">CI/CD</span>
+            <span class="tag t2">PostgreSQL</span>
+            <span class="tag t2">Git</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag-group-label">Specialties</div>
+          <div class="tags">
+            <span class="tag t3">System Architecture</span>
+            <span class="tag t3">BFF Pattern</span>
+            <span class="tag t3">Technical Leadership</span>
+            <span class="tag t3">Mentorship</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <div class="side-block-title">Education</div>
+        <div class="edu-item">
+          <div class="edu-school">Santa Clara University</div>
+          <div class="edu-degree">Master's, Computer Science and Engineering</div>
+          <div class="edu-year">2014 – 2015</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">Fundação Getúlio Vargas</div>
+          <div class="edu-degree">MBA, Business Administration</div>
+          <div class="edu-year">2008 – 2009</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">Universidade Federal do Ceará</div>
+          <div class="edu-degree">BSc., Computer &amp; Telecom Engineering</div>
+          <div class="edu-year">2006 – 2007</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">Universidade Federal do Ceará</div>
+          <div class="edu-degree">BSc., Electrical Engineering</div>
+          <div class="edu-year">2003 – 2005</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Other designs: <a href="/1">/1 terminal</a> · <a href="/2">/2 minimal</a> · <a href="/3">/3 dark sidebar</a>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          obs.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.timeline-item, .side-block').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>

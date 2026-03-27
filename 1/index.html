@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guilherme Carvalho — Staff Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #21262d;
+      --green: #39d353;
+      --cyan: #58a6ff;
+      --yellow: #e3b341;
+      --text: #c9d1d9;
+      --muted: #6e7681;
+      --accent: #39d353;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    ::selection { background: var(--green); color: var(--bg); }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header */
+    .header {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), var(--cyan), var(--green));
+      background-size: 200% 100%;
+      animation: slide 3s linear infinite;
+    }
+
+    @keyframes slide {
+      from { background-position: 0% 0%; }
+      to { background-position: 200% 0%; }
+    }
+
+    .prompt {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 0.5rem;
+    }
+
+    .prompt span { color: var(--green); }
+
+    .name {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--green);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .title-line {
+      color: var(--cyan);
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      font-size: 12px;
+    }
+
+    .contact-grid a {
+      color: var(--green);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-grid a:hover { color: #fff; }
+
+    .contact-item::before { content: '→ '; color: var(--muted); }
+
+    /* Sections */
+    .section {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      animation: fadeIn 0.6s ease both;
+    }
+
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.2s; }
+    .section:nth-child(4) { animation-delay: 0.3s; }
+    .section:nth-child(5) { animation-delay: 0.4s; }
+    .section:nth-child(6) { animation-delay: 0.5s; }
+
+    .section-header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.5rem;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-header::before {
+      content: '#';
+      color: var(--green);
+      font-size: 13px;
+    }
+
+    .section-body { padding: 1.5rem; }
+
+    /* Summary */
+    .summary-text {
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 13px;
+      border-left: 2px solid var(--green);
+      padding-left: 1rem;
+    }
+
+    /* Skills */
+    .skills-group { margin-bottom: 1rem; }
+    .skills-group:last-child { margin-bottom: 0; }
+
+    .skills-label {
+      color: var(--yellow);
+      font-size: 11px;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-size: 12px;
+      color: var(--cyan);
+      transition: border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+
+    .tag:hover {
+      border-color: var(--cyan);
+      color: #fff;
+    }
+
+    /* Jobs */
+    .job {
+      position: relative;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .job:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    .job-company {
+      color: var(--yellow);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 0.1rem;
+    }
+
+    .job-title {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .job-date {
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 0.8rem;
+      margin-top: 0.1rem;
+    }
+
+    .job-date::before { content: '// '; color: var(--green); }
+
+    .job ul { list-style: none; }
+
+    .job li {
+      font-size: 12px;
+      color: var(--text);
+      padding: 0.2rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .job li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: 10px;
+      top: 0.3rem;
+    }
+
+    /* Education */
+    .edu-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .edu-item:last-child { margin-bottom: 0; }
+
+    .edu-school {
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .edu-degree {
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .edu-date {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      padding-top: 1rem;
+    }
+
+    .footer a { color: var(--green); text-decoration: none; }
+
+    /* Scanline overlay - very subtle */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+      z-index: 9999;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1rem 0.75rem; }
+      .section-body { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="prompt"><span>guest@guilherme.dev</span>:~$ cat resume.md</div>
+      <h1 class="name">Guilherme Carvalho<span class="cursor"></span></h1>
+      <div class="title-line">// Staff Software Engineer · Austin, Texas</div>
+      <div class="contact-grid">
+        <span class="contact-item">guilherme.carvalho@gmail.com</span>
+        <a href="https://linkedin.com/in/gcarv" class="contact-item">linkedin.com/in/gcarv</a>
+        <a href="https://github.com/guigacarvalho" class="contact-item">github.com/guigacarvalho</a>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section">
+      <div class="section-header">summary</div>
+      <div class="section-body">
+        <p class="summary-text">
+          Staff Software Engineer with 8+ years of experience in web development, mobile applications, and cloud technologies. Proven leadership in mentoring teams, driving innovation, and optimizing application performance. Passionate about transitioning legacy systems to modern cloud architectures and building scalable software solutions.
+        </p>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <div class="section-header">skills</div>
+      <div class="section-body">
+        <div class="skills-group">
+          <div class="skills-label">Languages &amp; Frameworks</div>
+          <div class="tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">React</span>
+            <span class="tag">React Native</span>
+            <span class="tag">Redux</span>
+            <span class="tag">RxJS</span>
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">C++</span>
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS/SASS</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <div class="skills-label">Tools &amp; Platforms</div>
+          <div class="tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Cloud Functions</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">App Center</span>
+            <span class="tag">Webpack</span>
+            <span class="tag">Git</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">RESTful APIs</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <div class="skills-label">Specialties</div>
+          <div class="tags">
+            <span class="tag">System Architecture</span>
+            <span class="tag">BFF Pattern</span>
+            <span class="tag">Performance Optimization</span>
+            <span class="tag">Technical Leadership</span>
+            <span class="tag">Mentorship</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <div class="section-header">experience</div>
+      <div class="section-body">
+
+        <div class="job">
+          <div class="job-company">The Home Depot</div>
+          <div class="job-title">Staff Software Engineer</div>
+          <div class="job-date">January 2023 – Present · Austin, TX</div>
+          <ul>
+            <li>Led development of critical application used by 700+ associates; earned Orange Spotlight award</li>
+            <li>Interviewed and onboarded 10+ engineers, improving team capacity and knowledge sharing</li>
+            <li>Designed and implemented the Backend-for-Frontend (BFF) pattern, enhancing API efficiency</li>
+            <li>Documented architecture decisions and created proof-of-concept implementations</li>
+            <li>Integrated application with existing CI/CD pipelines, streamlining deployment processes</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-company">The Home Depot</div>
+          <div class="job-title">Staff Software Engineer</div>
+          <div class="job-date">March 2020 – December 2022 · Austin, TX</div>
+          <ul>
+            <li>Mentored and onboarded 8 software engineers, accelerating productivity and technical growth</li>
+            <li>Drove CI/CD pipeline upgrades, improving build times and deployment reliability</li>
+            <li>Led API redesign initiative for services department, enhancing performance and DX</li>
+            <li>Transitioned legacy C++ systems to Node.js Cloud Functions, reducing maintenance costs</li>
+            <li>Implemented UX improvements based on user feedback and analytics data</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-company">The Home Depot</div>
+          <div class="job-title">Mobile Application Developer</div>
+          <div class="job-date">March 2019 – March 2020 · Austin, TX</div>
+          <ul>
+            <li>Developed features for mobile apps using React Native, Redux, and RxJS</li>
+            <li>Managed full mobile app lifecycle: specs, sizing, builds, and releases</li>
+            <li>Implemented and configured mobile CI/CD pipeline</li>
+            <li>Created shareable component library, increasing dev speed and UI consistency</li>
+            <li>Reduced final app bundle size by 25% through code optimization</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-company">Techshed</div>
+          <div class="job-title">Full Stack Engineer</div>
+          <div class="job-date">April 2015 – February 2019</div>
+          <ul>
+            <li>Built responsive web apps using Python/Django, PostgreSQL, and JavaScript (Angular, Vue.js)</li>
+            <li>Optimized performance and SEO, increasing page load speed and search rankings</li>
+            <li>Designed REST APIs documented for internal and external developers</li>
+            <li>Contributed to internal NPM packages, improving dev productivity across teams</li>
+            <li>Implemented A/B testing frameworks, providing data-driven insights for product decisions</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-company">Frugal Innovation Lab</div>
+          <div class="job-title">Software Engineer</div>
+          <div class="job-date">February 2014 – March 2015 · San Francisco Bay Area</div>
+          <ul>
+            <li>Developed APIs and web interfaces for mobile apps using JS, HTML5, Cordova, Ember.js, PHP, MySQL</li>
+            <li>Collaborated on solutions for resource-constrained environments</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-company">M. Dias Branco</div>
+          <div class="job-title">Project Analyst / Industrial Engineer</div>
+          <div class="job-date">February 2008 – December 2012</div>
+          <ul>
+            <li>Awarded Best Industrial Project for achieving $100,000+ in energy savings via Compressed Air Optimization</li>
+            <li>Deployed Manufacturing Execution System (MES) with Rockwell Automation</li>
+            <li>Planned industrial network architecture and programmed PLC and web interfaces</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-header">education</div>
+      <div class="section-body">
+        <div class="edu-item">
+          <div class="edu-school">Santa Clara University</div>
+          <div class="edu-degree">Master's, Computer Science and Engineering</div>
+          <div class="edu-date">2014 – 2015</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">Fundação Getúlio Vargas</div>
+          <div class="edu-degree">MBA, Business Administration and Management</div>
+          <div class="edu-date">2008 – 2009</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">Universidade Federal do Ceará</div>
+          <div class="edu-degree">BSc., Computer &amp; Telecommunications Engineering</div>
+          <div class="edu-date">2006 – 2007</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">Universidade Federal do Ceará</div>
+          <div class="edu-degree">BSc., Electrical Engineering</div>
+          <div class="edu-date">2003 – 2005</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>View other designs: <a href="/2">/2 minimal</a> · <a href="/3">/3 dark sidebar</a> · <a href="/4">/4 editorial</a></p>
+    </div>
+
+  </div>
+</body>
+</html>
