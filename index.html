@@ -304,6 +304,81 @@
       transition: border-color 0.25s, color 0.25s;
     }
 
+    /* Print / PDF */
+    @page {
+      size: letter;
+      margin: 0.5in 0.55in;
+    }
+
+    @media print {
+      :root,
+      [data-theme="dark"] {
+        --bg: #ffffff;
+        --text: #111111;
+        --muted: #555555;
+        --accent: #1d4ed8;
+        --rule: #d4d4d4;
+        --tag-bg: transparent;
+        --tag-text: #333333;
+        --body-text: #222222;
+      }
+
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+
+      html, body { background: #ffffff; }
+      body { font-size: 9.5pt; line-height: 1.4; }
+
+      .theme-toggle, footer { display: none !important; }
+
+      .reveal { opacity: 1 !important; transform: none !important; }
+
+      .page { max-width: none; padding: 0; }
+
+      header { margin-bottom: 0.9rem; padding-bottom: 0.75rem; }
+      .header-meta { font-size: 7.5pt; margin-bottom: 0.4rem; }
+      h1 { font-size: 26pt; margin-bottom: 0.25rem; }
+      h1 br { display: none; }
+      .subtitle { font-size: 10.5pt; margin-bottom: 0.5rem; }
+      .contact-row { font-size: 9pt; gap: 0.2rem 1.2rem; }
+      .contact-row a { border-bottom: none; }
+      .contact-row a[data-print] { font-size: 0; }
+      .contact-row a[data-print]::after { content: attr(data-print); font-size: 9pt; }
+
+      section { margin-bottom: 0.9rem; }
+      .section-label { font-size: 8pt; margin-bottom: 0.6rem; break-after: avoid; page-break-after: avoid; }
+
+      .summary p { font-size: 9.5pt; line-height: 1.45; max-width: none; }
+      .summary p + p { margin-top: 0.35rem; }
+
+      .skills-grid { gap: 0.25rem; }
+      .skill-row { grid-template-columns: 130px 1fr; gap: 0.6rem; }
+      .skill-category { font-size: 8.5pt; padding-top: 0.05rem; }
+      .tags { gap: 0.25rem; }
+      .tag {
+        font-size: 8pt;
+        padding: 0.05rem 0.4rem;
+        border: 1px solid #d4d4d4;
+      }
+
+      .job {
+        padding-bottom: 0.55rem;
+        margin-bottom: 0.55rem;
+      }
+      .job-header { margin-bottom: 0.2rem; break-after: avoid; page-break-after: avoid; }
+      .job li { break-inside: avoid; page-break-inside: avoid; }
+      .job-company { font-size: 11pt; }
+      .job-meta { margin-top: 0; }
+      .job-title, .job-date { font-size: 9pt; }
+      .job ul { margin-top: 0.25rem; }
+      .job li { font-size: 9pt; padding: 0.03rem 0 0.03rem 1rem; line-height: 1.35; }
+      .job li::before { font-size: 8pt; }
+
+      .edu-grid { grid-template-columns: 1fr 1fr; gap: 0.45rem 2rem; }
+      .edu-item { break-inside: avoid; page-break-inside: avoid; }
+      .edu-school { font-size: 9.5pt; }
+      .edu-degree, .edu-date { font-size: 8.5pt; }
+    }
+
     @media (max-width: 560px) {
       .page { padding: 3rem 1.25rem; }
       .skill-row { grid-template-columns: 1fr; gap: 0.4rem; }
@@ -335,12 +410,12 @@
 
     <header class="reveal">
       <div class="header-meta">Resume · Technical Lead, Agentic Development</div>
-      <h1>Guilherme<br>Carvalho</h1>
+      <h1>Guilherme<br> Carvalho</h1>
       <p class="subtitle">AI Development · Distributed Systems · Cloud Infrastructure · Austin, Texas</p>
       <div class="contact-row">
         <span>guilherme.carvalho@gmail.com</span>
-        <a href="https://linkedin.com/in/gcarv">LinkedIn</a>
-        <a href="https://github.com/guigacarvalho">GitHub</a>
+        <a href="https://linkedin.com/in/gcarv" data-print="linkedin.com/in/gcarv">LinkedIn</a>
+        <a href="https://github.com/guigacarvalho" data-print="github.com/guigacarvalho">GitHub</a>
       </div>
     </header>
 
