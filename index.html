@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guilherme Carvalho — AI Engineer</title>
-  <meta name="description" content="Staff Software Engineer with 10+ years of experience in web development, mobile, and cloud. Austin, Texas.">
+  <meta name="description" content="Technical Lead for Agentic Development at The Home Depot. Staff Software Engineer with 10+ years of experience in AI agents, distributed systems, and cloud infrastructure. Austin, Texas.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%231F2328' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z'/></svg>" media="(prefers-color-scheme: light)">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23ffffff' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z'/></svg>" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -191,6 +191,8 @@
       transition: color 0.25s;
     }
 
+    .summary p + p { margin-top: 0.9rem; }
+
     /* Skills */
     .skills-grid { display: grid; gap: 0.8rem; }
 
@@ -302,6 +304,81 @@
       transition: border-color 0.25s, color 0.25s;
     }
 
+    /* Print / PDF */
+    @page {
+      size: letter;
+      margin: 0.5in 0.55in;
+    }
+
+    @media print {
+      :root,
+      [data-theme="dark"] {
+        --bg: #ffffff;
+        --text: #111111;
+        --muted: #555555;
+        --accent: #1d4ed8;
+        --rule: #d4d4d4;
+        --tag-bg: transparent;
+        --tag-text: #333333;
+        --body-text: #222222;
+      }
+
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+
+      html, body { background: #ffffff; }
+      body { font-size: 9.5pt; line-height: 1.4; }
+
+      .theme-toggle, footer { display: none !important; }
+
+      .reveal { opacity: 1 !important; transform: none !important; }
+
+      .page { max-width: none; padding: 0; }
+
+      header { margin-bottom: 0.9rem; padding-bottom: 0.75rem; }
+      .header-meta { font-size: 7.5pt; margin-bottom: 0.4rem; }
+      h1 { font-size: 26pt; margin-bottom: 0.25rem; }
+      h1 br { display: none; }
+      .subtitle { font-size: 10.5pt; margin-bottom: 0.5rem; }
+      .contact-row { font-size: 9pt; gap: 0.2rem 1.2rem; }
+      .contact-row a { border-bottom: none; }
+      .contact-row a[data-print] { font-size: 0; }
+      .contact-row a[data-print]::after { content: attr(data-print); font-size: 9pt; }
+
+      section { margin-bottom: 0.9rem; }
+      .section-label { font-size: 8pt; margin-bottom: 0.6rem; break-after: avoid; page-break-after: avoid; }
+
+      .summary p { font-size: 9.5pt; line-height: 1.45; max-width: none; }
+      .summary p + p { margin-top: 0.35rem; }
+
+      .skills-grid { gap: 0.25rem; }
+      .skill-row { grid-template-columns: 130px 1fr; gap: 0.6rem; }
+      .skill-category { font-size: 8.5pt; padding-top: 0.05rem; }
+      .tags { gap: 0.25rem; }
+      .tag {
+        font-size: 8pt;
+        padding: 0.05rem 0.4rem;
+        border: 1px solid #d4d4d4;
+      }
+
+      .job {
+        padding-bottom: 0.55rem;
+        margin-bottom: 0.55rem;
+      }
+      .job-header { margin-bottom: 0.2rem; break-after: avoid; page-break-after: avoid; }
+      .job li { break-inside: avoid; page-break-inside: avoid; }
+      .job-company { font-size: 11pt; }
+      .job-meta { margin-top: 0; }
+      .job-title, .job-date { font-size: 9pt; }
+      .job ul { margin-top: 0.25rem; }
+      .job li { font-size: 9pt; padding: 0.03rem 0 0.03rem 1rem; line-height: 1.35; }
+      .job li::before { font-size: 8pt; }
+
+      .edu-grid { grid-template-columns: 1fr 1fr; gap: 0.45rem 2rem; }
+      .edu-item { break-inside: avoid; page-break-inside: avoid; }
+      .edu-school { font-size: 9.5pt; }
+      .edu-degree, .edu-date { font-size: 8.5pt; }
+    }
+
     @media (max-width: 560px) {
       .page { padding: 3rem 1.25rem; }
       .skill-row { grid-template-columns: 1fr; gap: 0.4rem; }
@@ -332,21 +409,21 @@
   <div class="page">
 
     <header class="reveal">
-      <div class="header-meta">Resume · Staff Software Engineer</div>
-      <h1>Guilherme<br>Carvalho</h1>
-      <p class="subtitle">AI Engineering · Austin, Texas</p>
+      <div class="header-meta">Resume · Technical Lead, Agentic Development</div>
+      <h1>Guilherme<br> Carvalho</h1>
+      <p class="subtitle">AI Development · Distributed Systems · Cloud Infrastructure · Austin, Texas</p>
       <div class="contact-row">
         <span>guilherme.carvalho@gmail.com</span>
-        <a href="https://linkedin.com/in/gcarv">LinkedIn</a>
-        <a href="https://github.com/guigacarvalho">GitHub</a>
+        <a href="https://linkedin.com/in/gcarv" data-print="linkedin.com/in/gcarv">LinkedIn</a>
+        <a href="https://github.com/guigacarvalho" data-print="github.com/guigacarvalho">GitHub</a>
       </div>
     </header>
 
     <section class="reveal">
       <div class="section-label">Summary</div>
       <div class="summary">
-        <p>Proven leadership in mentoring teams, driving platform-level improvements, and prototyping AI-driven developer tooling — including multi-agent architectures, RLMs and workflow automation.</p>
-        <p>Engineer with 10+ years of experience in web development, mobile applications, and cloud technologies.</p>
+        <p>Technical lead building production AI agents at The Home Depot — currently leading an agentic initiative that automates complex quote creation end to end, with evals, observability, and compliance guardrails built in from day one.</p>
+        <p>Staff Software Engineer with 10+ years of experience in web development, mobile applications, and cloud technologies. Proven leadership in mentoring teams, driving platform-level improvements, and building AI-driven tooling — including multi-agent architectures, RLMs, and autonomous workflow automation.</p>
       </div>
     </section>
 
@@ -357,7 +434,13 @@
           <div class="skill-category">AI &amp; ML</div>
           <div class="tags">
             <span class="tag">LangGraph</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">LangSmith</span>
             <span class="tag">Google ADK</span>
+            <span class="tag">MCP</span>
+            <span class="tag">A2A</span>
+            <span class="tag">Agent Evals</span>
+            <span class="tag">Human-in-the-Loop</span>
           </div>
         </div>
         <div class="skill-row">
@@ -376,13 +459,14 @@
           <div class="tags">
             <span class="tag">AWS</span>
             <span class="tag">GCP</span>
-            <span class="tag">CI/CD</span>
+            <span class="tag">CI/CD · GitHub Actions</span>
             <span class="tag">Kubernetes / cdk8s</span>
             <span class="tag">Git</span>
             <span class="tag">PostgreSQL</span>
             <span class="tag">GraphQL</span>
             <span class="tag">RESTful APIs</span>
             <span class="tag">Turborepo</span>
+            <span class="tag">k6</span>
           </div>
         </div>
         <div class="skill-row">
@@ -391,6 +475,13 @@
             <span class="tag">System Architecture</span>
             <span class="tag">Performance Optimization</span>
             <span class="tag">Technical Leadership</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-category">Spoken Languages</div>
+          <div class="tags">
+            <span class="tag">English</span>
+            <span class="tag">Portuguese</span>
           </div>
         </div>
       </div>
@@ -403,14 +494,33 @@
         <div class="job-header">
           <div class="job-company">The Home Depot</div>
           <div class="job-meta">
-            <span class="job-title">Tech Lead</span>
-            <span class="job-date">Jul 2024 – Present</span>
+            <span class="job-title">Technical Lead · Agentic Development</span>
+            <span class="job-date">Jul 2026 – Present</span>
           </div>
         </div>
         <ul>
-          <li>Implemented AI-driven developer productivity tooling: designed a workflow for multi-repo task implementation,  documentation automation, changelog management, and test suite stabilization.</li>
-          <li>Designed agents for order generation workflow, utilizing the A2A protocol, multi-agent architecture, MCP server integration, only to realize it was an overkill for the task. Ended up using an RLM, built in tasks and using half of the tokens on average and gaining in workflow flexibility.</li>
+          <li>Lead the AI initiative automating complex quote creation: the agent ingests Salesforce cases, generates quotes, and selects products using customer context and purchase history while resolving availability, inventory, and fulfillment constraints</li>
+          <li>Agent already handles 200+ cases per day while still in development and is projected to cut associate steps by 70% on average; store pilot upcoming</li>
+          <li>Built an evaluation framework that gates every change, ensuring the agent measurably improves with each release</li>
+          <li>Implemented authentication, memory persistence, and LangSmith observability, plus a decision-model classifier that routes Salesforce cases to the agent or the support team</li>
+          <li>Designed a content moderation layer that keeps the agent compliant and isolated from confidential customer information</li>
+          <li>Driving dynamic UI generation, human-in-the-loop flows, shared agent state, and token efficiency</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company">The Home Depot</div>
+          <div class="job-meta">
+            <span class="job-title">Staff Software Engineer / Tech Lead</span>
+            <span class="job-date">Jul 2024 – Jun 2026</span>
+          </div>
+        </div>
+        <ul>
+          <li>Implemented AI-driven developer productivity tooling: designed a workflow for multi-repo task implementation, documentation automation, changelog management, and test suite stabilization, and built a standardized library adopted by the team</li>
+          <li>Designed a multi-agent order generation workflow using the A2A protocol and MCP server integration, then simplified it to an RLM with built-in tasks once multi-agent proved overkill — halving average token usage while gaining workflow flexibility</li>
           <li>Drove platform-level component architecture improvements, increasing reuse across teams and accelerating feature delivery</li>
+          <li>Redesigned the feature deployment model to support safer incremental releases and improve operational reliability</li>
           <li>Standardized microservice build pipelines, reducing operational overhead and improving consistency across the service fleet</li>
           <li>Re-engineered the main application deployment strategy, improving release cadence and system stability</li>
           <li>Introduced k6 performance testing framework for microservices, enabling proactive identification of scalability and reliability risks</li>
